@@ -1,8 +1,11 @@
 use std::net::UdpSocket;
 use std::str;
 
+use controller_test_server::create_join_request;
+
 fn main() -> std::io::Result<()> {
     {
+        create_join_request("hello world".to_string());
         let socket = UdpSocket::bind("0.0.0.0:8000")?;
         match socket.local_addr() {
             Ok(socket_addr) => {
